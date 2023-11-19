@@ -1,0 +1,28 @@
+/* .pending:hover {
+  background-color: rgb(217, 119, 6);
+  color: white;
+  margin: 4px;
+  border-radius: 0.5rem;
+} */
+
+.font-bistro{
+  font-family: CinzelExtraBold;
+  letter-spacing: 4.5px;
+}
+
+.font-restaurant{
+  font-family: CinzelBold;
+  letter-spacing: 5px;
+}
+
+/* .navbar {
+  font-family: InterRegular;
+  font-family: InterMedium;
+  font-family: InterSemiBold;
+} */
+
+.font {
+  font-family: InterRegular, InterMedium, InterSemiBold;
+  /* font-family: InterMedium;
+  font-family: InterSemiBold; */
+}

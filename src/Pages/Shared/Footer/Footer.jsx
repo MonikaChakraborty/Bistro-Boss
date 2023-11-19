@@ -1,9 +1,50 @@
+import { FaFacebookF } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa6";
+import { FaTwitter } from "react-icons/fa";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer>
-      <div className="footer p-10 bg-neutral text-neutral-content">
+      <div className="grid grid-cols-2 w-full">
+        {/* left side */}
+        <div className=" flex flex-col justify-center items-center bg-[#1F2937] text-gray-200 pl-48 pt-16 pb-16">
+          <h1 className="font-semibold text-2xl mb-4">CONTACT US</h1>
+          <p className="font-semibold text-sm mb-1">
+            123 ABS Street, Uni 21, Bangladesh
+          </p>
+          <p className="font-semibold text-sm mb-1">+88 123456789</p>
+          <p className="font-semibold text-sm mb-1">Mon - Fri: 08:00 - 22:00</p>
+          <p className="font-semibold text-sm mb-1">Sat - Sun: 10:00 - 23:00</p>
+        </div>
+
+        {/* right side */}
+
+        <div className="bg-[#111827] flex flex-col justify-center items-center text-gray-200 pr-48 pt-16 pb-16">
+          <h1 className="font-semibold text-2xl mb-4">Follow US</h1>
+          <h3 className="font-semibold text-xl mb-4">
+            Join us on social media
+          </h3>
+          <div className="flex gap-6">
+            <FaFacebookF className="text-blue-600" size={30} />
+            <FaInstagram className="text-pink-600" size={30} />
+            <FaTwitter className="text-sky-400" size={35} />
+          </div>
+        </div>
+
+        {/* <div className="p-4 footer-center bg-base-300 text-base-content"> */}
+
+        {/* </div> */}
+      </div>
+      {/* <div className="flex flex-col w-full lg:flex-row">
+        <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center"></div>
+        <div className="divider lg:divider-horizontal">OR</div>
+        <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
+          content
+        </div>
+      </div> */}
+      {/* <div className="footer p-10 bg-neutral text-neutral-content">
         <aside>
           <svg
             width="50"
@@ -60,12 +101,14 @@ const Footer = () => {
             </a>
           </div>
         </nav>
+      </div> */}
+
+      <div  className="text-center bg-[#151515] p-3 text-gray-200 font-semibold text-lg">
+        <p>
+          
+          Copyright © {currentYear} CulinaryCloud. All rights reserved by CulinaryCloud.
+        </p>
       </div>
-      <div className="p-4 footer-center bg-base-300 text-base-content">
-          <aside>
-            <p>Copyright © {currentYear} - All right reserved by ACME Industries Ltd</p>
-          </aside>
-        </div>
     </footer>
   );
 };

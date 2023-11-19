@@ -4,7 +4,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
  import './Featured.css'
 const Featured = () => {
     return (
-        <div className="featured-item bg-fixed text-white pt-8 my-20 bg-slate-500 bg-opacity-70">
+        <div className="featured-item bg-fixed text-white pt-8 my-20 bg-slate-500 bg-opacity-70 max-w-screen-xl mx-auto">
             <SectionTitle heading="Featured Item" subHeading="check it out"></SectionTitle>
            <div>
            <div className="md:flex justify-center items-center pb-20 pt-12 px-36 bg-gray-900 bg-opacity-50">

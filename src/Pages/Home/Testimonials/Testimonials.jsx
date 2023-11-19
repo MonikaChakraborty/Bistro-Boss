@@ -19,7 +19,7 @@ const Testimonials = () => {
       .then((data) => setReviews(data));
   }, []);
   return (
-    <section className="mb-24">
+    <section className="mb-24 max-w-screen-xl mx-auto">
       <SectionTitle
         heading={"Testimonials "}
         subHeading={"What Our Clients Say"}

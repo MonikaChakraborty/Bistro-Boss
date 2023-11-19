@@ -1,0 +1,35 @@
+@font-face{
+    font-family: 'InterRegular';
+    src: local('InterRegular'),
+    url('./Inter-Regular.ttf') format('ttf');
+}
+
+@font-face{
+    font-family: 'InterMedium';
+    src: local('InterMedium'),
+    url('./Inter-Medium.ttf') format('ttf');
+}
+
+@font-face{
+    font-family: 'InterSemiBold';
+    src: local('InterSemiBold'),
+    url('./Inter-SemiBold.ttf') format('ttf');
+}
+
+/* @font-face{
+    font-family: 'CinzelRegular';
+    src: local('CinzelRegular'),
+    url('./Cinzel-Regular.ttf') format('ttf');
+} */
+
+@font-face{
+    font-family: 'CinzelExtraBold';
+    src: local('CinzelExtraBold'),
+    url('./Cinzel-ExtraBold.ttf') format('ttf');
+}
+
+@font-face{
+    font-family: 'CinzelBold';
+    src: local('CinzelBold'),
+    url('./Cinzel-Bold.ttf') format('ttf');
+}

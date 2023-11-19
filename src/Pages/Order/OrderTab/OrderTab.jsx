@@ -14,7 +14,7 @@ const OrderTab = ({ items }) => {
   };
 
   return (
-    <div>
+    <div className="max-w-screen-xl mx-auto mb-10">
       <Swiper 
         pagination={pagination}
         modules={[Pagination]}
