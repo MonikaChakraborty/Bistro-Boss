@@ -29,15 +29,17 @@ const Order = () => {
 
       <Cover img={orderCoverImg} title={"Order Food"}></Cover>
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-        <TabList>
-          <Tab>Salad</Tab>
-          <Tab>Pizza</Tab>
-          <Tab>Soup</Tab>
-          <Tab>Dessert</Tab>
-          <Tab>Drinks</Tab>
+        <TabList className='mb-10 border-b-2 max-w-screen-xl mx-auto flex justify-center mt-10 text-lg font-semibold bg-amber-600 rounded w-96 py-2 text-white'
+
+        >
+          <Tab selectedClassName="bg-white text-gray-600 rounded-t border">Salad</Tab>
+          <Tab selectedClassName="bg-white text-gray-600 rounded-t">Pizza</Tab>
+          <Tab selectedClassName="bg-white text-gray-600 rounded-t">Soup</Tab>
+          <Tab selectedClassName="bg-white text-gray-600 rounded-t">Dessert</Tab>
+          <Tab selectedClassName="bg-white text-gray-600 rounded-t">Drinks</Tab>
         </TabList>
 
-        <TabPanel>
+        <TabPanel className=''>
           <OrderTab items={salad}></OrderTab>
         </TabPanel>
 
