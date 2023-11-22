@@ -4,10 +4,12 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import logo from "/logo.png";
 import "./NavBar.css";
 import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../../Hooks/useCart";
 
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
 
   const handleLogout = () => {
     logOut()
@@ -23,8 +25,8 @@ const NavBar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "text-gray-200 bg-amber-600 text-lg font-medium  mb-2"
-              : "text-xl hover:bg-amber-600 hover:text-gray-200   text-gray-200 font-medium"
+              ? "text-gray-200 bg-amber-600 text-lg font-semibold mb-2"
+              : "text-xl hover:bg-amber-600 hover:text-gray-200   text-gray-200 font-semibold"
           }
         >
           Home
@@ -37,8 +39,8 @@ const NavBar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "text-gray-200 bg-amber-600 text-lg font-medium lg:ml-2"
-              : "text-xl hover:bg-amber-600 hover:text-gray-200 lg:hover:ml-2 text-gray-200 font-medium"
+              ? "text-gray-200 bg-amber-600 text-lg font-semibold lg:ml-2"
+              : "text-xl hover:bg-amber-600 hover:text-gray-200 lg:hover:ml-2 text-gray-200 font-semibold"
           }
         >
           Our Menu
@@ -51,8 +53,8 @@ const NavBar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "text-gray-200 bg-amber-600 text-lg font-medium lg:mt-0 lg:mb-0 mt-2 mb-2 lg:ml-2"
-              : "text-xl hover:bg-amber-600 hover:text-gray-200 lg:hover:ml-2 text-gray-200 font-medium"
+              ? "text-gray-200 bg-amber-600 text-lg font-semibold lg:mt-0 lg:mb-0 mt-2 mb-2 lg:ml-2"
+              : "text-xl hover:bg-amber-600 hover:text-gray-200 lg:hover:ml-2 text-gray-200 font-semibold"
           }
           to="/order/salad"
         >
@@ -66,8 +68,8 @@ const NavBar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "text-gray-200 bg-amber-600 text-lg font-medium lg:mt-0 mt-2 lg:ml-2"
-              : "text-xl hover:bg-amber-600 hover:text-gray-200 lg:hover:ml-2 text-gray-200 font-medium"
+              ? "text-gray-200 bg-amber-600 text-lg font-semibold lg:mt-0 mt-2 lg:ml-2"
+              : "text-xl hover:bg-amber-600 hover:text-gray-200 lg:hover:ml-2 text-gray-200 font-semibold"
           }
           to="/secret"
         >
@@ -77,18 +79,16 @@ const NavBar = () => {
 
       <li>
         <Link to="/">
-          <button className="btn">
-          <FaShoppingCart className="" />
+          <button className="btn -mt-2 ">
+          <FaShoppingCart size={20} className="" />
 
-            <div className="badge badge-secondary">+0</div>
+            <div className="badge bg-amber-600 text-white  text-lg py-3 px-3">+{cart.length}</div>
           </button>
         </Link>
       </li>
 
       {user ? (
         <>
-
-
           <button
             onClick={handleLogout}
             className="btn text-gray-700 lg:text-gray-200 text-lg font-semibold hover:text-gray-600"
@@ -178,7 +178,7 @@ const NavBar = () => {
                   <li>
                     <button
                       onClick={logOut}
-                      className="btn btn-ghost text-sm text-gray-700 lg:text-base  bg-gray-600 normal-case"
+                      className="btn btn-ghost text-sm text-gray-200 lg:text-base  bg-gray-600 normal-case"
                     >
                       Logout
                     </button>
