@@ -78,7 +78,7 @@ const NavBar = () => {
       </li>
 
       <li>
-        <Link to="/">
+        <Link to="/dashboard/cart">
           <button className="btn -mt-2 ">
           <FaShoppingCart size={20} className="" />
 
