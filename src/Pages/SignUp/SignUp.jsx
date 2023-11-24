@@ -4,40 +4,53 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
+
   const {
     register,
-    handleSubmit, reset, 
+    handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const {createUser, updateUserProfile} = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data);
-    createUser(data.email, data.password)
-    .then(result =>{
+    createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
       updateUserProfile(data.name, data.photoURL)
-      .then(() => {
-        console.log('updatingggggg');
-        reset();
+        .then(() => {
+          // create user entry in the database
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
 
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'User Created Successfully',
-          showConfirmButton: false,
-          timer: 1500
-        });
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log('user added');
+              reset();
 
-        navigate('/'); 
-      })
-      .catch(error => console.log(error))
-    })
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User Created Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+
+              navigate("/");
+            }
+          });
+        })
+        .catch((error) => console.log(error));
+    });
   };
 
   //   console.log(watch("example"))
@@ -155,12 +168,19 @@ const SignUp = () => {
                 />
               </div>
             </form>
-            <p><small>Already have an account? <Link to='/login'>Login</Link></small></p>
+            <p className="px-8">
+              <small>
+                Already have an account? <Link to="/login">Login</Link>
+              </small>
+            </p>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
     </>
   );
 };
+
+
 
 export default SignUp;
