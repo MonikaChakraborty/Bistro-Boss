@@ -5,10 +5,11 @@ import logo from "/logo.png";
 import "./NavBar.css";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../../Hooks/useCart";
-
+import useAdmin from "../../../Hooks/useAdmin";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
   const [cart] = useCart();
 
   const handleLogout = () => {
@@ -62,27 +63,55 @@ const NavBar = () => {
         </NavLink>
       </li>
 
+      {
+        // user ? 'true' : 'false
+        // user ? condition ? 'double true' : 'one true' : 'false'
+      }
+
+      {
+      user && isAdmin && (
       <li>
-        <NavLink
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "text-gray-200 bg-amber-600 text-lg font-semibold lg:mt-0 mt-2 lg:ml-2"
-              : "text-xl hover:bg-amber-600 hover:text-gray-200 lg:hover:ml-2 text-gray-200 font-semibold"
-          }
-          to="/secret"
-        >
-          Secret
-        </NavLink>
-      </li>
+          <NavLink
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "text-gray-200 bg-amber-600 text-lg font-semibold lg:mt-0 mt-2 lg:ml-2"
+                : "text-xl hover:bg-amber-600 hover:text-gray-200 lg:hover:ml-2 text-gray-200 font-semibold"
+            }
+            to="/dashboard/adminHome"
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      )}
+
+{
+      user && !isAdmin && (
+      <li>
+          <NavLink
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "text-gray-200 bg-amber-600 text-lg font-semibold lg:mt-0 mt-2 lg:ml-2"
+                : "text-xl hover:bg-amber-600 hover:text-gray-200 lg:hover:ml-2 text-gray-200 font-semibold"
+            }
+            to="/dashboard/userHome"
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      )}
 
       <li>
         <Link to="/dashboard/cart">
           <button className="btn -mt-2 ">
-          <FaShoppingCart size={20} className="" />
+            <FaShoppingCart size={20} className="" />
 
-            <div className="badge bg-amber-600 text-white  text-lg py-3 px-3">+{cart.length}</div>
+            <div className="badge bg-amber-600 text-white  text-lg py-3 px-3">
+              +{cart.length}
+            </div>
           </button>
         </Link>
       </li>
@@ -186,8 +215,8 @@ const NavBar = () => {
                 </ul>
               </div>
               <div>
-                <a className="btn text-white font-semibold text-base hover:bg-amber-600" >
-                  Welcome  {user?.displayName}
+                <a className="btn text-white font-semibold text-base hover:bg-amber-600">
+                  Welcome {user?.displayName}
                 </a>
               </div>
             </div>

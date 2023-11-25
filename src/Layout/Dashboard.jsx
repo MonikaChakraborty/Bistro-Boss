@@ -12,12 +12,13 @@ import {
 import { FaCalendar } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../Hooks/useCart";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
 
   //
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="flex">
@@ -32,12 +33,16 @@ const Dashboard = () => {
                   Admin Home
                 </NavLink>
               </li>
+
+
               <li>
                 <NavLink to="/dashboard/addItems">
                   <FaUtensils></FaUtensils>
                   Add Items
                 </NavLink>
               </li>
+
+
               <li>
                 <NavLink to="/dashboard/manageItems">
                   <FaList></FaList>
@@ -51,6 +56,8 @@ const Dashboard = () => {
                   Manage Bookings
                 </NavLink>
               </li>
+
+
               <li>
                 <NavLink to="/dashboard/users">
                   <FaUsers></FaUsers>
@@ -59,7 +66,43 @@ const Dashboard = () => {
               </li>
             </>
           ) : (
-            <></>
+            <>
+            <li>
+              <NavLink to="/dashboard/userHome">
+                <FaHome></FaHome>
+                User Home
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink to="/dashboard/reservation">
+                <FaCalendar></FaCalendar>
+                Reservation
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink to="/dashboard/cart">
+                <FaShoppingCart></FaShoppingCart>
+                My Cart ({cart.length})
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink to="/dashboard/review">
+                <FaAd></FaAd>
+               Add a Review
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink to="/dashboard/bookings">
+                <FaList></FaList>
+                My Bookings
+              </NavLink>
+            </li>
+            
+            </>
           )}
 
           {/* shared nav links */}
@@ -70,12 +113,16 @@ const Dashboard = () => {
               Home
             </NavLink>
           </li>
+
+
           <li>
             <NavLink to="/order/salad">
               <FaSearch></FaSearch>
               Menu
             </NavLink>
           </li>
+
+
           <li>
             <NavLink to="/order/contact">
               <FaEnvelope></FaEnvelope>

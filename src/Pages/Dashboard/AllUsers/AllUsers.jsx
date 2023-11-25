@@ -83,7 +83,7 @@ const AllUsers = () => {
                 users.map((user, index) => <tr key={user._id}>
                     <th>{index + 1}</th>
                     <td>{user.name}</td>
-                    <td>{user.email} Specialist</td>
+                    <td>{user.email}</td>
                     <td>
                     { user.role === 'admin' ? 'Admin' : <button
                     onClick={() => handleMakeAdmin(user)}
